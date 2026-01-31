@@ -1,30 +1,71 @@
 // =======================================
-// Smooth Scrolling for Navigation Links
+// Custom Cursor
 // =======================================
-document.querySelectorAll('.sidebar-nav a, .btn, .scroll-down, nav a').forEach(anchor => {
+const cursor = document.querySelector('.cursor');
+const cursorFollower = document.querySelector('.cursor-follower');
+
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+  
+  setTimeout(() => {
+    cursorFollower.style.left = e.clientX + 'px';
+    cursorFollower.style.top = e.clientY + 'px';
+  }, 100);
+});
+
+// Cursor expand on hover over interactive elements
+document.querySelectorAll('a, button, .project-card').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+    cursorFollower.style.transform = 'translate(-50%, -50%) scale(1.5)';
+  });
+  
+  el.addEventListener('mouseleave', () => {
+    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+    cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
+  });
+});
+
+// =======================================
+// Parallax Effect for Background Layers
+// =======================================
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  const layers = document.querySelectorAll('.parallax-layer');
+  
+  layers.forEach((layer, index) => {
+    const speed = (index + 1) * 0.3;
+    layer.style.transform = `translateY(${scrolled * speed}px)`;
+  });
+});
+
+// =======================================
+// Smooth Scrolling
+// =======================================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
 });
 
 // =======================================
-// Theme Toggle Functionality
+// Theme Toggle
 // =======================================
 const themeToggleBtn = document.getElementById('theme-toggle');
 if (themeToggleBtn) {
   themeToggleBtn.addEventListener('click', function() {
     document.body.classList.toggle('light-theme');
-    // Optional: Save preference to localStorage
     const isLight = document.body.classList.contains('light-theme');
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
   });
 }
 
-// Load saved theme preference
+// Load saved theme
 window.addEventListener('DOMContentLoaded', () => {
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'light') {
@@ -33,53 +74,80 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // =======================================
-// Scroll-Triggered Animations
+// Animated Counter for Stats
 // =======================================
-function handleIntersection(entries, observer) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      // Add animation classes when element comes into view
-      entry.target.classList.add('animate__animated', 'animate__fadeInUp');
-      // Optional: Unobserve after animation (animate only once)
-      observer.unobserve(entry.target);
+function animateCounter(element, target, duration = 2000) {
+  const start = 0;
+  const increment = target / (duration / 16);
+  let current = start;
+  
+  const timer = setInterval(() => {
+    current += increment;
+    if (current >= target) {
+      current = target;
+      clearInterval(timer);
     }
-  });
+    element.textContent = target % 1 === 0 ? Math.floor(current) : current.toFixed(1);
+  }, 16);
 }
 
-// Create Intersection Observer
-const observerOptions = {
-  threshold: 0.1, // Trigger when 10% of element is visible
-  rootMargin: '0px 0px -50px 0px' // Start animation slightly before element is fully visible
-};
-
-const observer = new IntersectionObserver(handleIntersection, observerOptions);
-
-// Observe all sections when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  // Add animate-on-scroll class to all main sections
-  const sections = document.querySelectorAll('main section:not(#hero)');
-  sections.forEach((section) => {
-    section.classList.add('animate-on-scroll');
-    observer.observe(section);
+// Intersection Observer for Counter Animation
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const target = parseFloat(entry.target.getAttribute('data-target'));
+      animateCounter(entry.target, target);
+      statObserver.unobserve(entry.target);
+    }
   });
+}, { threshold: 0.5 });
 
-  // Also observe project cards individually for staggered effect
-  const projectCards = document.querySelectorAll('.project-card');
-  projectCards.forEach((card, index) => {
-    card.style.animationDelay = `${index * 0.2}s`; // Stagger animation
-    observer.observe(card);
-  });
+document.querySelectorAll('.stat-number').forEach(stat => {
+  statObserver.observe(stat);
 });
 
 // =======================================
-// Add Hover Effects to Buttons
+// Scroll-Triggered Animations
 // =======================================
-document.querySelectorAll('.btn, .project-link').forEach(button => {
-  button.addEventListener('mouseenter', function() {
-    this.classList.add('animate__animated', 'animate__pulse');
+const scrollObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
   });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.glass-section, .project-card, .timeline-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(50px)';
+  el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+  scrollObserver.observe(el);
+});
+
+// =======================================
+// Floating Animation for Project Cards
+// =======================================
+document.querySelectorAll('.project-card').forEach((card, index) => {
+  card.style.animationDelay = `${index * 0.2}s`;
+});
+
+// =======================================
+// Interactive Parallax on Mouse Move
+// =======================================
+document.addEventListener('mousemove', (e) => {
+  const { clientX, clientY } = e;
+  const x = (clientX / window.innerWidth - 0.5) * 20;
+  const y = (clientY / window.innerHeight - 0.5) * 20;
   
-  button.addEventListener('animationend', function() {
-    this.classList.remove('animate__animated', 'animate__pulse');
+  document.querySelectorAll('.glass-card').forEach(card => {
+    card.style.transform = `perspective(1000px) rotateY(${x}deg) rotateX(${-y}deg)`;
+  });
+});
+
+// Reset on mouse leave
+document.addEventListener('mouseleave', () => {
+  document.querySelectorAll('.glass-card').forEach(card => {
+    card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
   });
 });
