@@ -4,163 +4,253 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Abdullah Abdul Khader - Portfolio</title>
+  <!-- Import Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- Add Animate.css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Parallax Background Layers -->
+  <div class="parallax-bg">
+    <div class="parallax-layer layer-1"></div>
+    <div class="parallax-layer layer-2"></div>
+    <div class="parallax-layer layer-3"></div>
+  </div>
+
   <div class="container">
-    <aside class="sidebar">
+    <!-- Glassmorphic Sidebar -->
+    <aside class="sidebar glass">
       <div class="profile">
         <h1>Abdullah Abdul Khader</h1>
       </div>
       <nav class="sidebar-nav">
         <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#volunteer">Volunteer</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <button id="theme-toggle">Toggle Theme</button>
+          <li><a href="#hero" class="glass-nav-item">Home</a></li>
+          <li><a href="#about" class="glass-nav-item">About</a></li>
+          <li><a href="#skills" class="glass-nav-item">Skills</a></li>
+          <li><a href="#projects" class="glass-nav-item">Projects</a></li>
+          <li><a href="#experience" class="glass-nav-item">Experience</a></li>
+          <li><a href="#volunteer" class="glass-nav-item">Volunteer</a></li>
+          <li><a href="#contact" class="glass-nav-item">Contact</a></li>
+          <button id="theme-toggle" class="glass-button">Toggle Theme</button>
         </ul>
       </nav>
     </aside>
+
     <main class="main-content">
-      <!-- Hero Section -->
+      <!-- Hero Section with Glassmorphism -->
       <section id="hero">
-        <div class="hero-content">
-          <h1>"The best way to predict the future is to invent it." – Alan Kay</h1>
-          <p>I'm Abdullah Abdul Khader, a passionate Computer Science student &amp; developer.</p>
-          <a href="#about" class="btn">Discover More</a>
+        <div class="hero-content glass-hero">
+          <h1 class="glowing-text">"The best way to predict the future is to invent it."</h1>
+          <p class="subtitle">– Alan Kay</p>
+          <p class="hero-description">I'm Abdullah Abdul Khader, a passionate Computer Science student &amp; developer.</p>
+          <div class="hero-stats glass">
+            <div class="stat">
+              <span class="stat-number" data-target="3.9">0</span>
+              <span class="stat-label">GPA</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" data-target="4">0</span>
+              <span class="stat-label">Projects</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" data-target="2">0</span>
+              <span class="stat-label">Dean's List</span>
+            </div>
+          </div>
+          <a href="#about" class="btn glass-button">Discover More</a>
         </div>
         <div class="scroll-down">
           <span>&#x2193;</span>
         </div>
       </section>
       
-      <!-- About Section -->
-      <section id="about" class="animate-on-scroll">
-        <h2>About Me</h2>
-        <p>
-          Fourth-year Computer Science student at Brock University specializing in Software Engineering with a <strong>3.9/4.0 GPA</strong>. 
-          Dean's Honour List recipient (2023, 2024) with expertise in software testing, full-stack development, and AI training. 
-          I enjoy building scalable web applications, implementing distributed systems, and developing innovative solutions to complex problems.
-        </p>
-        <div class="stats">
-          <div class="stat-item">
-            <h3>3.9</h3>
-            <p>GPA / 4.0</p>
-          </div>
-          <div class="stat-item">
-            <h3>Dean's List</h3>
-            <p>2023, 2024</p>
-          </div>
-          <div class="stat-item">
-            <h3>4+</h3>
-            <p>Major Projects</p>
+      <!-- About Section - Glassmorphic Card -->
+      <section id="about" class="glass-section">
+        <div class="glass-card">
+          <h2>About Me</h2>
+          <p>
+            Fourth-year Computer Science student at <strong>Brock University</strong> specializing in Software Engineering with a <strong>3.9/4.0 GPA</strong>. 
+            Dean's Honour List recipient (2023, 2024) with expertise in software testing, full-stack development, and AI training. 
+            I enjoy building scalable web applications, implementing distributed systems, and developing innovative solutions to complex problems.
+          </p>
+          <div class="achievements">
+            <div class="achievement-badge glass">
+              <span class="badge-icon">🏆</span>
+              <span class="badge-text">Dean's List 2023</span>
+            </div>
+            <div class="achievement-badge glass">
+              <span class="badge-icon">🏆</span>
+              <span class="badge-text">Dean's List 2024</span>
+            </div>
+            <div class="achievement-badge glass">
+              <span class="badge-icon">💼</span>
+              <span class="badge-text">AI Training Specialist</span>
+            </div>
           </div>
         </div>
       </section>
       
-      <!-- Skills Section -->
-      <section id="skills" class="animate-on-scroll">
-        <h2>Technical Skills</h2>
-        <ul>
-          <li><strong>Java</strong> - Advanced</li>
-          <li><strong>HTML</strong> - Advanced</li>
-          <li><strong>Python</strong> - Intermediate</li>
-          <li><strong>Excel</strong> - Advanced</li>
-        </ul>
+      <!-- Skills Section - Glassmorphic Grid -->
+      <section id="skills" class="glass-section">
+        <div class="glass-card">
+          <h2>Technical Skills</h2>
+          <div class="skills-grid">
+            <div class="skill-category glass">
+              <h3>Languages</h3>
+              <div class="skill-items">
+                <span class="skill-badge glass">Java</span>
+                <span class="skill-badge glass">Python</span>
+                <span class="skill-badge glass">SQL</span>
+                <span class="skill-badge glass">JavaScript</span>
+                <span class="skill-badge glass">HTML/CSS</span>
+                <span class="skill-badge glass">Kotlin</span>
+              </div>
+            </div>
+            <div class="skill-category glass">
+              <h3>Frameworks & Tools</h3>
+              <div class="skill-items">
+                <span class="skill-badge glass">FastAPI</span>
+                <span class="skill-badge glass">Next.js</span>
+                <span class="skill-badge glass">React</span>
+                <span class="skill-badge glass">Node.js</span>
+                <span class="skill-badge glass">OpenTelemetry</span>
+                <span class="skill-badge glass">Git</span>
+                <span class="skill-badge glass">Linux</span>
+                <span class="skill-badge glass">PostgreSQL</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
       
-      <!-- Projects Section -->
-      <section id="projects" class="animate-on-scroll">
-        <h2>Projects</h2>
+      <!-- Projects Section - Glassmorphic Cards -->
+      <section id="projects" class="glass-section">
+        <h2 class="section-title">Featured Projects</h2>
         <div class="projects-container">
-          <div class="project-card">
-            <h3>Web Development Project</h3>
-            <p>
-              Developed a dynamic website using HTML, CSS, and JavaScript with a user-friendly interface. Implemented secure user authentication and interactive features such as a cart and wishlist.
-            </p>
-            <a href="https://www.cosc.brocku.ca/~ak21hh/A4/index.php" class="project-link" target="_blank">View Project</a>
+          <div class="project-card glass floating">
+            <div class="project-header">
+              <h3>ScholarScout (PC Finder)</h3>
+              <span class="project-date">Fall 2025</span>
+            </div>
+            <p>Full-stack web application to rank and recommend academic program committee candidates using multi-factor scoring algorithm and PageRank.</p>
+            <div class="tech-stack">
+              <span class="tech-tag glass">Python</span>
+              <span class="tech-tag glass">FastAPI</span>
+              <span class="tech-tag glass">Next.js</span>
+              <span class="tech-tag glass">React</span>
+            </div>
+            <a href="#" class="project-link glass-button">View Project →</a>
           </div>
-          <div class="project-card">
-            <h3>Simple Text Editor Development</h3>
-            <p>
-              Created a Java-based text editor with advanced formatting and file management features, enhancing user productivity with efficient file operations.
-            </p>
-            <a href="https://example.com/text-editor" class="project-link" target="_blank">View Project</a>
+
+          <div class="project-card glass floating">
+            <div class="project-header">
+              <h3>Code Plagiarism Detection</h3>
+              <span class="project-date">Jan 2026</span>
+            </div>
+            <p>Backend plagiarism detection engine analyzing structural code similarities beyond surface-level changes using AST comparison.</p>
+            <div class="tech-stack">
+              <span class="tech-tag glass">Python</span>
+              <span class="tech-tag glass">Git</span>
+              <span class="tech-tag glass">AST</span>
+            </div>
+            <a href="#" class="project-link glass-button">View Project →</a>
           </div>
-          <div class="project-card">
-            <h3>Floor Plan Generator</h3>
-            <p>
-              Built an intuitive Java tool featuring dynamic recursive algorithms for efficient floor plan generation, allowing users to visualize customizable room layouts.
-            </p>
-            <a href="https://example.com/floor-plan" class="project-link" target="_blank">View Project</a>
+
+          <div class="project-card glass floating">
+            <div class="project-header">
+              <h3>Distributed File Transfer</h3>
+              <span class="project-date">Fall 2025</span>
+            </div>
+            <p>Client-server file transfer application with integrated distributed tracing using OpenTelemetry for performance monitoring.</p>
+            <div class="tech-stack">
+              <span class="tech-tag glass">Java</span>
+              <span class="tech-tag glass">OpenTelemetry</span>
+            </div>
+            <a href="#" class="project-link glass-button">View Project →</a>
           </div>
         </div>
       </section>
       
       <!-- Experience Section -->
-      <section id="experience" class="animate-on-scroll">
-        <h2>Work Experience</h2>
-        <div class="experience">
-          <h3>IT Go Live Support - Niagara Health</h3>
-          <p>
-            Analyzed complex software systems to identify bugs and troubleshoot issues. Collaborated with the IT team to enhance system performance and streamline workflows.
-          </p>
-        </div>
-        <div class="experience">
-          <h3>Associate - Popeye's Louisiana Kitchen</h3>
-          <p>
-            Addressed customer concerns and optimized operational flow, leading to a significant increase in positive feedback.
-          </p>
-        </div>
-        <div class="experience">
-          <h3>Merchandising Associate - Ahmed Sultan Trading</h3>
-          <p>
-            Improved store efficiency through strategic inventory organization and effective inventory management techniques.
-          </p>
+      <section id="experience" class="glass-section">
+        <div class="glass-card">
+          <h2>Professional Experience</h2>
+          <div class="timeline">
+            <div class="timeline-item glass">
+              <div class="timeline-date">Jan 2026 – Present</div>
+              <h3>AI Training Specialist</h3>
+              <p class="company">Aether Project – Outlier AI (Remote)</p>
+              <ul>
+                <li>Train and evaluate large language models by generating high-quality code examples</li>
+                <li>Perform data annotation and quality assurance for AI model accuracy</li>
+                <li>Assess code correctness and efficiency for reinforcement learning pipelines</li>
+              </ul>
+            </div>
+            <div class="timeline-item glass">
+              <div class="timeline-date">Sep 2024 – Dec 2024</div>
+              <h3>IT Go Live Support</h3>
+              <p class="company">Niagara Health, St. Catharines</p>
+              <ul>
+                <li>Analyzed complex software systems to identify bugs during critical deployment phases</li>
+                <li>Ensured zero downtime for patient care systems</li>
+                <li>Enhanced system performance across healthcare departments</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
       
       <!-- Volunteer Section -->
-      <section id="volunteer" class="animate-on-scroll">
-        <h2>Volunteer Experience</h2>
-        <div class="volunteer">
-          <h3>Scout Captain - Bharat Scout and Guides</h3>
-          <p>
-            Led a team of 30 members, streamlined team coordination, and executed successful community projects.
-          </p>
-        </div>
-        <div class="volunteer">
-          <h3>Assistant - Badar – Al – Rabie Hospital</h3>
-          <p>
-            Enhanced patient care by promptly addressing concerns and coordinating effective support.
-          </p>
-        </div>
-        <div class="volunteer">
-          <h3>Co-president - Arab Shabab Dammam</h3>
-          <p>
-            Mentored team members, fostered skill development, and improved overall team performance through engaging sessions.
-          </p>
+      <section id="volunteer" class="glass-section">
+        <div class="glass-card">
+          <h2>Leadership & Volunteer</h2>
+          <div class="volunteer-grid">
+            <div class="volunteer-card glass">
+              <h3>Scout Captain</h3>
+              <p class="org">Bharat Scout and Guides</p>
+              <p>Led a team of 30 members, increasing project completion efficiency by 20% through strategic task delegation.</p>
+            </div>
+          </div>
         </div>
       </section>
       
       <!-- Contact Section -->
-      <section id="contact" class="animate-on-scroll">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:ak21hh@brocku.ca">ak21hh@brocku.ca</a> | Phone: 365-855-1811</p>
+      <section id="contact" class="glass-section">
+        <div class="glass-card contact-card">
+          <h2>Get In Touch</h2>
+          <div class="contact-info">
+            <a href="mailto:ak21hh@brocku.ca" class="contact-item glass">
+              <span class="icon">📧</span>
+              <span>ak21hh@brocku.ca</span>
+            </a>
+            <a href="tel:365-855-1811" class="contact-item glass">
+              <span class="icon">📱</span>
+              <span>365-855-1811</span>
+            </a>
+            <a href="https://linkedin.com/in/abdullah-ak-034b1125a" class="contact-item glass" target="_blank">
+              <span class="icon">💼</span>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/axk47" class="contact-item glass" target="_blank">
+              <span class="icon">💻</span>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
       </section>
       
       <!-- Footer -->
-      <footer>
+      <footer class="glass">
         <p>&copy; 2026 Abdullah Abdul Khader</p>
       </footer>
     </main>
   </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
   
   <script src="script.js"></script>
 </body>
