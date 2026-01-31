@@ -6,6 +6,7 @@
     padding: 0;
     box-sizing: border-box;
   }
+
 html {
   scroll-behavior: smooth;
 }
@@ -214,12 +215,76 @@ html {
   }
   body:not(.light-theme) #experience:hover {
     background-color: #1f1f1f;  /* Subtle dark hover in dark mode */
-  } body:not(.light-theme) #volunteer:hover {
+  } 
+  body:not(.light-theme) #volunteer:hover {
     background-color: #1f1f1f;  /* Subtle dark hover in dark mode */
   }
   body:not(.light-theme) #contact:hover {
     background-color: #1f1f1f;  /* Subtle dark hover in dark mode */
   }
+
+  /* =======================================
+     Stats Section in About
+  ========================================== */
+  .stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(231, 76, 60, 0.1);
+    border-radius: 8px;
+    flex: 1;
+    min-width: 150px;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+
+  .stat-item:hover {
+    transform: translateY(-5px);
+    background: rgba(231, 76, 60, 0.2);
+  }
+
+  .stat-item h3 {
+    font-size: 2rem;
+    color: #e74c3c;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-item p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  body.light-theme .stat-item {
+    background: rgba(231, 76, 60, 0.1);
+  }
+
+  body.light-theme .stat-item h3 {
+    color: #e74c3c;
+  }
+
+  /* =======================================
+     Animation Utilities
+  ========================================== */
+  .animate-on-scroll {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .animate-on-scroll.animate__animated {
+    opacity: 1;
+  }
+
+  /* Ensure hero content is always visible */
+  #hero .hero-content {
+    opacity: 1 !important;
+  }
+
   /* =======================================
      Projects Section
   ========================================== */
@@ -332,9 +397,11 @@ html {
   }
   body.light-theme #experience:hover {
     background-color: #f7f9fa;
-  } body.light-theme #volunteer:hover {
+  } 
+  body.light-theme #volunteer:hover {
     background-color: #f7f9fa;
-  } body.light-theme #contact:hover {
+  } 
+  body.light-theme #contact:hover {
     background-color: #f7f9fa;
   }
   
@@ -366,5 +433,3 @@ html {
       flex: 1 1 100%;
     }
   }
-
-  
